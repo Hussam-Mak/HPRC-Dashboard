@@ -1,7 +1,59 @@
 // HPRC Dashboard Interactive Features
 document.addEventListener('DOMContentLoaded', function() {
+    checkFontAwesome();
     initializeDashboard();
 });
+
+// Check if Font Awesome loaded and add fallbacks if needed
+function checkFontAwesome() {
+    // Check if Font Awesome is loaded by testing a common icon
+    const testIcon = document.createElement('i');
+    testIcon.className = 'fas fa-question-circle';
+    testIcon.style.visibility = 'hidden';
+    testIcon.style.position = 'absolute';
+    document.body.appendChild(testIcon);
+    
+    const computedStyle = window.getComputedStyle(testIcon, '::before');
+    const content = computedStyle.getPropertyValue('content');
+    
+    // If Font Awesome didn't load, add fallback styles
+    if (!content || content === 'none' || content === '""') {
+        console.log('Font Awesome not loaded, using fallbacks');
+        addFallbackStyles();
+    }
+    
+    document.body.removeChild(testIcon);
+}
+
+function addFallbackStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .fa-question-circle::before { content: "?" !important; }
+        .fa-sort::before { content: "↕" !important; }
+        .fa-university::before { content: "🏛" !important; }
+        .fa-times::before { content: "×" !important; }
+        .fa-play::before { content: "▶" !important; }
+        .fa-clock::before { content: "⏰" !important; }
+        .fa-circle::before { content: "●" !important; }
+        .fa-hdd::before { content: "💾" !important; }
+        .fa-exclamation-triangle::before { content: "⚠" !important; }
+        .fa-check-circle::before { content: "✓" !important; }
+        .fa-bell::before { content: "🔔" !important; }
+        .fa-user::before { content: "👤" !important; }
+        .fa-user-graduate::before { content: "🎓" !important; }
+        .fa-folder::before { content: "📁" !important; }
+        .fa-code::before { content: "💻" !important; }
+        .fa-file-archive::before { content: "📦" !important; }
+        .fa-calculator::before { content: "🧮" !important; }
+        .fa-database::before { content: "🗄" !important; }
+        .fa-cogs::before { content: "⚙" !important; }
+        .fa-users::before { content: "👥" !important; }
+        .fa-chart-line::before { content: "📈" !important; }
+        .fa-info-circle::before { content: "ℹ" !important; }
+        .fa-arrow-up::before { content: "↑" !important; }
+    `;
+    document.head.appendChild(style);
+}
 
 function initializeDashboard() {
     setupTooltips();
@@ -601,20 +653,6 @@ function showModal(title, content) {
                 background: #e9ecef;
             }
             
-            .help-icon {
-                background: none;
-                border: none;
-                color: #8B0000;
-                cursor: pointer;
-                padding: 0.25rem;
-                border-radius: 4px;
-                transition: background-color 0.2s;
-                margin-left: 0.5rem;
-            }
-            
-            .help-icon:hover {
-                background: rgba(139, 0, 0, 0.1);
-            }
         `;
         document.head.appendChild(style);
     }
