@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texas A&M Dashboard (ACES) - HPRC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="tamu-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>High Performance Research Computing</h1>
+                        <span class="subtitle">DIVISION OF RESEARCH</span>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <h2>TEXAS A&M DASHBOARD (ACES)</h2>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn">Create Help Ticket</button>
+                    <button class="header-btn">Request Software</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Content -->
+        <main class="dashboard-main">
+            <div class="dashboard-layout">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Node and Core Utilization -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>System Utilization</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="utilization-charts">
+                                <div class="chart-container">
+                                    <h3>Node Utilization</h3>
+                                    <div class="donut-chart" id="nodeChart">
+                                        <div class="chart-center">
+                                            <span class="chart-value">1,247</span>
+                                            <span class="chart-label">Total Nodes</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart-legend">
+                                        <div class="legend-item">
+                                            <span class="legend-color allocated"></span>
+                                            <span>Allocated</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color mixed"></span>
+                                            <span>Mixed</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color idle"></span>
+                                            <span>Idle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-container">
+                                    <h3>Core Utilization</h3>
+                                    <div class="donut-chart" id="coreChart">
+                                        <div class="chart-center">
+                                            <span class="chart-value">9,976</span>
+                                            <span class="chart-label">Total Cores</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart-legend">
+                                        <div class="legend-item">
+                                            <span class="legend-color allocated"></span>
+                                            <span>Allocated</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color idle"></span>
+                                            <span>Idle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Queue Availability -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Queue Availability</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="queue-table">
+                                <div class="table-header">
+                                    <div class="table-cell">Queue</div>
+                                    <div class="table-cell">Nodes Avail</div>
+                                    <div class="table-cell">CPU Avail</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">normal</div>
+                                    <div class="table-cell">1,156</div>
+                                    <div class="table-cell">9,248</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">gpu</div>
+                                    <div class="table-cell">45</div>
+                                    <div class="table-cell">360</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">short</div>
+                                    <div class="table-cell">46</div>
+                                    <div class="table-cell">368</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group Memberships -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Group Memberships</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="group-memberships">
+                                <div class="group-item">u.mp108705</div>
+                                <div class="group-item">staff</div>
+                                <div class="group-item">hprc</div>
+                                <div class="group-item">matlab</div>
+                                <div class="group-item">p.sta220004.000</div>
+                                <div class="group-item">p.tra230003.000</div>
+                                <div class="group-item">p.tra220029.000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+                    <!-- Accounts -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Accounts</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="accounts-table">
+                                <div class="table-header">
+                                    <div class="table-cell sortable">
+                                        Account
+                                        <i class="fas fa-sort"></i>
+                                    </div>
+                                    <div class="table-cell sortable">
+                                        Default
+                                        <i class="fas fa-sort"></i>
+                                    </div>
+                                    <div class="table-cell sortable">
+                                        Allocation
+                                        <i class="fas fa-sort"></i>
+                                    </div>
+                                    <div class="table-cell sortable">
+                                        Used
+                                        <i class="fas fa-sort"></i>
+                                    </div>
+                                    <div class="table-cell sortable">
+                                        Balance
+                                        <i class="fas fa-sort"></i>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <span class="account-id">154669186753</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <a href="#" class="default-link">Set Default</a>
+                                    </div>
+                                    <div class="table-cell">951,450</div>
+                                    <div class="table-cell negative">-2,323.01</div>
+                                    <div class="table-cell positive">949,126.99</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <span class="account-id">155062417651</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <span class="default-badge">default</span>
+                                    </div>
+                                    <div class="table-cell">10,994</div>
+                                    <div class="table-cell negative">-6,415.36</div>
+                                    <div class="table-cell positive">4,578.64</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <span class="account-id">156171559762</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <a href="#" class="default-link">Set Default</a>
+                                    </div>
+                                    <div class="table-cell">250,000</div>
+                                    <div class="table-cell">0</div>
+                                    <div class="table-cell positive">250,000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disk Quotas -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Disk Quotas</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="quotas-table">
+                                <div class="table-header">
+                                    <div class="table-cell">Disk</div>
+                                    <div class="table-cell">Disk Usage</div>
+                                    <div class="table-cell">Limit</div>
+                                    <div class="table-cell">File Usage</div>
+                                    <div class="table-cell">Limit</div>
+                                    <div class="table-cell">Actions</div>
+                                </div>
+                                
+                                <!-- Home Directory -->
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <span class="disk-name">home</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">313M</span>
+                                            <span class="usage-percent">(3.06%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 3.06%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">10.0G</div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">9,791</span>
+                                            <span class="usage-percent warning">(97.91%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill warning" style="width: 97.91%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">10,000</div>
+                                    <div class="table-cell">
+                                        <button class="btn-small">Request Quota Increase</button>
+                                    </div>
+                                </div>
+
+                                <!-- Scratch Directory -->
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <span class="disk-name">scratch</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">12.3G</span>
+                                            <span class="usage-percent">(0.17%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0.17%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">7.0T</div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">106,755</span>
+                                            <span class="usage-percent">(42.70%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 42.70%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">250,000</div>
+                                    <div class="table-cell">
+                                        <button class="btn-small">Request Quota Increase</button>
+                                    </div>
+                                </div>
+
+                                <!-- Group p.sta220004.000 -->
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <span class="disk-name">group/p.sta220004.000</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">3.6G</span>
+                                            <span class="usage-percent">(0.35%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0.35%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">1.0T</div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">21,744</span>
+                                            <span class="usage-percent">(4.35%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 4.35%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">500,000</div>
+                                    <div class="table-cell">
+                                        <button class="btn-small">Request Quota Increase</button>
+                                    </div>
+                                </div>
+
+                                <!-- Group p.tra230003.000 -->
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <span class="disk-name">group/p.tra230003.000</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">4K</span>
+                                            <span class="usage-percent">(0.00%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0.00%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">1.0T</div>
+                                    <div class="table-cell">
+                                        <div class="usage-info">
+                                            <span class="usage-value">1</span>
+                                            <span class="usage-percent">(0.00%)</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0.00%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">500,000</div>
+                                    <div class="table-cell">
+                                        <button class="btn-small">Request Quota Increase</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Tooltip Container -->
+    <div class="tooltip" id="tooltip">
+        <div class="tooltip-content">
+            <h4 id="tooltipTitle"></h4>
+            <p id="tooltipText"></p>
+            <a href="#" id="tooltipLink" target="_blank">Learn more in Knowledge Base</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
